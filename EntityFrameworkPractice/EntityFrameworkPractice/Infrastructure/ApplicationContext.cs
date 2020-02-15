@@ -9,6 +9,9 @@ namespace EntityFrameworkPractice.Controllers.Infrastructure
 {
     public class ApplicationContext : DbContext
     {
+        public ApplicationContext(DbContextOptions contextOptions): base(contextOptions)
+        {
+        }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Vendedor> Vendedores { get; set; }
         public DbSet<Produto> Produtos { get; set; }
@@ -17,7 +20,7 @@ namespace EntityFrameworkPractice.Controllers.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-VPIGJPR\CODENATION;Database=ApplicationTeste;Trusted_Connection=True");
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-VPIGJPR\CODENATION;Database=ApplicationTeste;Trusted_Connection=True");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
